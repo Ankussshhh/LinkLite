@@ -1,6 +1,12 @@
 const express = require("express");
-const mongoose = require("mongoose");
+
+const {handelCreateUrl, handelShortID}  = require("../controllers/url")
 
 const router = express.Router();
 
-router.route("/").get()
+router.post("/", handelCreateUrl);
+
+router.get('/:shortID', handelShortID )
+
+
+module.exports = router;

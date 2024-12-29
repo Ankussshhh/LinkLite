@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkLite - Simplify URLs</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>LinkLite</h1>
+      <p>Streamline your links with ease and elegance!</p>
+    </header>
+
+    <main>
+      <div class="url-shortener">
+        <input type="text" id="long-url" placeholder="Paste your long URL here..." />
+        <button id="shorten-btn">🔗 Shorten</button>
+      </div>
+
+      <div id="result" class="hidden">
+        <div class="card">
+          <p>Your shortened URL:</p>
+          <div class="short-url">
+            <a href="#" id="short-url" target="_blank"></a>
+            <button id="copy-btn">Copy</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2024 LinkLite. Built with ❤️ for seamless sharing.</p>
+    </footer>
+  </div>
+
+  <script src="./scripts/scripts.js"></script>
+</body>
+</html>

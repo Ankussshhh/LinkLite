@@ -1,0 +1,123 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* Header */
+header h1 {
+  font-size: 2.8rem;
+  color: #ffce45;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #d6d6d6;
+}
+
+/* URL Shortener */
+.url-shortener {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.url-shortener input {
+  flex: 1;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.url-shortener button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background: #ffce45;
+  color: #1e3c72;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.url-shortener button:hover {
+  background: #ffc107;
+  transform: translateY(-2px);
+}
+
+/* Result Section */
+#result {
+  margin-top: 25px;
+}
+
+.card {
+  background: #2a2a72;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.short-url {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.short-url a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffce45;
+  text-decoration: none;
+}
+
+.short-url button {
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background: #1e90ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.short-url button:hover {
+  background: #007bff;
+}
+
+/* Footer */
+footer {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #ccc;
+}

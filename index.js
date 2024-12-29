@@ -1,17 +1,24 @@
-const express = require('express')
-const app = express()
-const port = 3000
-
+const express = require("express");
+const path = require("path");
+const urlRoute = require("./routes/url");
 const db = require("./connection");
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const app = express();
+const port = 3000;
 
-//mongodb
-db.connectDB("mongodb://127.0.0.1:27017/LinkLite")
+// Connect to MongoDB
+db.connectDB("mongodb://127.0.0.1:27017/LinkLite");
 
+// Middleware to parse JSON
+app.use(express.json());
 
+// Serve static files (Frontend)
+app.use(express.static(path.join(__dirname, "public")));
+
+// URL Routes (API)
+app.use("/url", urlRoute);
+
+// Start the server
 app.listen(port, () => {
-  console.log(`Running on localhost: ${port}`)
-})
+  console.log(`Server running at http://localhost:${port}`);
+});
