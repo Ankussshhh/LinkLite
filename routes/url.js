@@ -4,14 +4,13 @@ const {
   handelCreateUrl,
   handelShortID,
   handelDeleteById,
+  handelGetAllUserForAdmin
 } = require("../controllers/url");
 
 const router = express.Router();
 
-router.post("/", handelCreateUrl);
+router.route("/").get(handelGetAllUserForAdmin).post(handelCreateUrl);
 
-router.get("/:shortID", handelShortID);
-
-router.delete("/:shortID", handelDeleteById);
+router.route("/:shortID").delete(handelDeleteById).get(handelShortID);
 
 module.exports = router;
