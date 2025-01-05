@@ -13,7 +13,9 @@ async function handelCreateUrl(req,res){
         visitHistory: []
     })
 
-    return res.json({id : sID});
+    return res.render('home', {
+        id : sID
+    })
 }
 
 async function handelShortID(req, res) {
@@ -45,6 +47,7 @@ async function handelDeleteById(req,res){
 async function handelGetAllUserForAdmin(req,res){
     const allLinks = await URL.find({});
   return res.json(allLinks);
+
 }
 
 

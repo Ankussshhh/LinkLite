@@ -1,11 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>URL Shortener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        form input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
+
 <body>
-    Home Page
+
+    <!-- Title Section -->
+    <h1>URL Shortener</h1>
+
+    <!-- URL Generation Form -->
+    <form action="/url" method="post">
+        <input type="text" name="url" placeholder="Enter URL (e.g., example@example.com)" required>
+        <button type="submit">Generate</button>
+    </form>
+
+    <!-- Display Generated URL -->
+    <% if (locals.id) {  %>
+        <div class="result">
+            <p>URL GENERATED: <a href="http://localhost:3000/url/<%= id %>">http://localhost:3000/url/<%= id %></a></p>
+        </div>
+    <% } %>
+
+    <!-- Display List of Shortened URLs -->
+    <% if (locals.urls) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Main URL</th>
+                    <th>Short URL</th>
+                    <th>Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% urls.forEach((url, index) => { %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= url.mainURL %></td>
+                        <td>http://localhost:3000/url/<%= url.shortURL %></td>
+                        <td><%= url.visitHistory.length %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } %>
+
 </body>
+
 </html>
