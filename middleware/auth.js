@@ -1,7 +1,6 @@
 const { getUser } = require("../services/auth");
 
 async function restrictToLogin(req, res, next) {
-    
     const userUid = req.cookies?.uid;
 
     if (!userUid) {
@@ -16,9 +15,17 @@ async function restrictToLogin(req, res, next) {
         req.user = user;
         next();
     } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error in restrictToLogin:", error);
         return res.redirect("/login");
     }
 }
 
-module.exports = { restrictToLogin };
+
+async function checkAuth(req, res, next) {
+  const userUid = req.cookies?.uid;
+  const user = await getUser(userUid);
+  req.user = user;
+  next();
+}
+
+module.exports = { restrictToLogin, checkAuth };

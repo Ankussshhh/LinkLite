@@ -1,4 +1,3 @@
-// services/auth.js
 const sessionToUserMap = new Map();
 
 function setUser(id, user) {

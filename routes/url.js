@@ -4,7 +4,7 @@ const {
   handelCreateUrl,
   handelShortID,
   handelDeleteById,
-  handelGetAllUserForAdmin
+  handelGetAllUserForAdmin,
 } = require("../controllers/url");
 
 const router = express.Router();

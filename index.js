@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const db = require("./connection");
 const cookieParser = require("cookie-parser");
-const { restrictToLogin } = require("./middleware/auth");
+const { restrictToLogin, checkAuth } = require("./middleware/auth");
 
 const app = express();
 const port = 3000;
@@ -27,7 +27,8 @@ app.set("views", path.resolve("./views"));
 // URL Routes (API)
 app.use("/url", restrictToLogin ,urlRoute);
 app.use("/user", userRoute);
-app.use("/", staticRoutes);
+app.use("/", checkAuth, staticRoutes);
+
 
 // Start the server
 app.listen(port, () => {
