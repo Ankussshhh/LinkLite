@@ -1,5 +1,5 @@
 const userModel = require("../models/user");
-const uuid = require("uuid").v4;
+// const uuid = require("uuid").v4;
 
 const { setUser } = require("../services/auth");
 
@@ -23,16 +23,14 @@ async function handelUserLogin(req, res) {
       return res.render("login", { error: "Invalid email or password" });
     }
 
-    const sessionID = uuid();
-    setUser(sessionID, user);
-
-    res.cookie("uid", sessionID, { httpOnly: true });
-
+    const token = setUser(user)
+    res.cookie("uid", token);
     return res.redirect("/");
   } catch (error) {
     console.error("Error during login:", error);
     res.status(500).send("Internal Server Error");
   }
+
 }
 
 module.exports = {
